@@ -17,23 +17,25 @@ updates = Input.updates
 #       else: 
 #           find next rule containing that page.
 
-updates = updates.splitlines()
-for i in range(len(updates)):
-    # e.g. "1,2,3,4,5" -> ["1", "2", "3", "4", "5"]
-    updates[i] = updates[i].split(sep=",")
-    update = updates[i]
-    for j in range(len(update)):
-        # e.g. ["1", "2", "3", "4", "5"] -> [1, 2, 3, 4, 5]
-        update[j] = int(update[j])
+# updates = updates.splitlines()
+# for i in range(len(updates)):
+#     # e.g. "1,2,3,4,5" -> ["1", "2", "3", "4", "5"]
+#     updates[i] = updates[i].split(sep=",")
+#     update = updates[i]
+#     for j in range(len(update)):
+#         # e.g. ["1", "2", "3", "4", "5"] -> [1, 2, 3, 4, 5]
+#         update[j] = int(update[j])
+updates = [[int(num) for num in line.split(",")] for line in updates.splitlines()]
 
-rules = rules.splitlines()
-for i in range(len(rules)):
-    # e.g. "2|4" -> ["2", "4"]
-    rules[i] = rules[i].split(sep="|")
-    rule = rules[i]
-    for j in range(len(rule)):
-        # e.g. ["2", "4"] -> [2, 4]
-        rule[j] = int(rule[j])
+# rules = rules.splitlines()
+# for i in range(len(rules)):
+#     # e.g. "2|4" -> ["2", "4"]
+#     rules[i] = rules[i].split(sep="|")
+#     rule = rules[i]
+#     for j in range(len(rule)):
+#         # e.g. ["2", "4"] -> [2, 4]
+#         rule[j] = int(rule[j])
+rules = [[int(num) for num in line.split(sep="|")] for line in rules.splitlines()]
 
 def inCorrectOrder(update: list[int], rules: list[list[int]]) -> bool:
     for page in update:
