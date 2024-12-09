@@ -49,6 +49,7 @@ def inCorrectOrder(update: list[int], rules: list[list[int]]) -> bool:
     return True
 
 # figured out the Divide and Conquer sorting algorithm completely by myself!
+# edit: ok no this isn't Divide and Conquer. I might've created something entirely new?
 def divide_n_conquer_sort(unsorted_l: list[int]) -> list[int]:
     l = []
     r = []
@@ -64,12 +65,14 @@ def divide_n_conquer_sort(unsorted_l: list[int]) -> list[int]:
         r = divide_n_conquer_sort(r)
     return l + [dividingNumber] + r
 
+
+
 sum = 0
 for update in updates:
-    print("\n", update)
+    print("\n", update) # for debugging
     if not inCorrectOrder(update, rules):
         sorted = divide_n_conquer_sort(update)
-        print(sorted)
+        print(sorted) # for debugging
         sum += sorted[len(sorted)//2]
 
 print(sum)
