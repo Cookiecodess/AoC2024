@@ -49,8 +49,9 @@ def inCorrectOrder(update: list[int], rules: list[list[int]]) -> bool:
     return True
 
 # figured out the Divide and Conquer sorting algorithm completely by myself!
-# edit: ok no this isn't Divide and Conquer. I might've created something entirely new?
-def divide_n_conquer_sort(unsorted_l: list[int]) -> list[int]:
+# edit: ok no this isn't Divide and Conquer. Apparently it's similar to quicksort but not exactly that either.
+# Note: chatGPT says that Topological Sort would be most efficient.
+def quicksortlike_sort(unsorted_l: list[int]) -> list[int]:
     l = []
     r = []
     dividingNumber = unsorted_l[0] # picking the first number is arbitrary
@@ -60,9 +61,9 @@ def divide_n_conquer_sort(unsorted_l: list[int]) -> list[int]:
         elif rule[1] == dividingNumber and rule[0] in unsorted_l:
             l.append(rule[0])
     if len(l) > 1: 
-        l = divide_n_conquer_sort(l)
+        l = quicksortlike_sort(l)
     if len(r) > 1: 
-        r = divide_n_conquer_sort(r)
+        r = quicksortlike_sort(r)
     return l + [dividingNumber] + r
 
 
@@ -71,7 +72,7 @@ sum = 0
 for update in updates:
     print("\n", update) # for debugging
     if not inCorrectOrder(update, rules):
-        sorted = divide_n_conquer_sort(update)
+        sorted = quicksortlike_sort(update)
         print(sorted) # for debugging
         sum += sorted[len(sorted)//2]
 
