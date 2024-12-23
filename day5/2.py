@@ -25,7 +25,7 @@ updates = Input.updates
 #     for j in range(len(update)):
 #         # e.g. ["1", "2", "3", "4", "5"] -> [1, 2, 3, 4, 5]
 #         update[j] = int(update[j])
-updates = [[int(num) for num in line.split(",")] for line in updates.splitlines()]
+updates = [[int(num) for num in line.split(",")] for line in updates.strip().splitlines()]
 
 # rules = rules.splitlines()
 # for i in range(len(rules)):
@@ -35,7 +35,7 @@ updates = [[int(num) for num in line.split(",")] for line in updates.splitlines(
 #     for j in range(len(rule)):
 #         # e.g. ["2", "4"] -> [2, 4]
 #         rule[j] = int(rule[j])
-rules = [[int(num) for num in line.split(sep="|")] for line in rules.splitlines()]
+rules = [[int(num) for num in line.split(sep="|")] for line in rules.strip().splitlines()]
 
 def inCorrectOrder(update: list[int], rules: list[list[int]]) -> bool:
     for page in update:
