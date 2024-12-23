@@ -1,10 +1,10 @@
 from testInput import TestInput
 from input import Input
 
-rules = TestInput.rules
-updates = TestInput.updates
-rules = Input.rules
-updates = Input.updates
+rules = TestInput.rules.strip()
+updates = TestInput.updates.strip()
+rules = Input.rules.strip()
+updates = Input.updates.strip()
 
 # for every update
 #   for every page
@@ -25,7 +25,7 @@ updates = Input.updates
 #     for j in range(len(update)):
 #         # e.g. ["1", "2", "3", "4", "5"] -> [1, 2, 3, 4, 5]
 #         update[j] = int(update[j])
-updates = [[int(num) for num in line.split(",")] for line in updates.strip().splitlines()]
+updates = [[int(num) for num in line.split(",")] for line in updates.splitlines()]
 
 # rules = rules.splitlines()
 # for i in range(len(rules)):
@@ -35,7 +35,7 @@ updates = [[int(num) for num in line.split(",")] for line in updates.strip().spl
 #     for j in range(len(rule)):
 #         # e.g. ["2", "4"] -> [2, 4]
 #         rule[j] = int(rule[j])
-rules = [[int(num) for num in line.split(sep="|")] for line in rules.strip().splitlines()]
+rules = [[int(num) for num in line.split(sep="|")] for line in rules.splitlines()]
 
 def inCorrectOrder(update: list[int], rules: list[list[int]]) -> bool:
     for page in update:
